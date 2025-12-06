@@ -45,7 +45,6 @@ class Favorites(db.Model):
     
 class Characters(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
-    favorites_id: Mapped[int] = mapped_column(ForeignKey("favorites.id"))
     favorites = relationship("Favorites", back_populates="character")
     name: Mapped[str] = mapped_column(String(80), nullable=False)
     birth_year: Mapped[str] = mapped_column(String(80), nullable=False)
@@ -73,7 +72,6 @@ class Characters(db.Model):
     
 class Species(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
-    favorites_id: Mapped[int] = mapped_column(ForeignKey("favorites.id"))
     favorites = relationship("Favorites", back_populates="species")
     name: Mapped[str] = mapped_column(String(80), nullable=False)
     classification: Mapped[str] = mapped_column(String(80), nullable=False)
@@ -101,7 +99,6 @@ class Species(db.Model):
     
 class Starships(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
-    favorites_id: Mapped[int] = mapped_column(ForeignKey("favorites.id"))
     favorites = relationship("Favorites", back_populates="starship")
     name: Mapped[str] = mapped_column(String(80), nullable=False)
     cargo_capacity: Mapped[str] = mapped_column(String(80), nullable=False)
